@@ -1,0 +1,41 @@
+select * from dept
+
+select * from emp;
+
+select sysdate from dual;
+
+update emp set sal=sal+500 where sal<1000
+
+select * from(select ename,rownum rn from emp where rownum<=10) where rn>5
+
+select * from (select ename,rownum rn from emp where rownum<=15) where rn>10
+
+select * from emp order by sal asc;
+
+select * from emp order by deptno asc,sal desc;
+
+select * from emp where sal between 3000 and 6000;
+
+select * from emp where 3000<sal and sal<6000;
+
+select * from emp where deptno in(10,20);
+
+select * from emp where deptno not in(10,20);
+
+select * from emp where ename like 'A%';
+
+select * from emp where ename like 'KIN_';
+
+select * from emp where ename like 'A%' and deptno=30;
+
+select * from dept;
+
+select deptno,count(ename),avg(sal),max(sal) from emp  where empno!=7369  group by deptno having max(sal)>=3000  order by deptno desc
+
+select * from emp where sal<3000 union select * from emp where deptno=20;
+
+select * from emp intersect select * from emp;
+
+select * from emp where deptno in (select deptno from dept where deptno=30);
+
+select * from emp 
