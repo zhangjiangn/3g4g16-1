@@ -1,0 +1,17 @@
+查看数据库名：select name from v$database;
+查看sga区情况：show sga;
+查看控制文件：select name from v$controlfile;
+查看日志文件：select member from v$logfile;
+查看数据文件：select name from v$datafile;
+oracle数据库文件后缀为dbf;
+查询“区”表信息：select  * from dba_extents;
+查询emp表结构：desc emp;
+查看当前拥有的用户：select distinct owner from all_objects;
+查看os版本及oracle版本：select banner form v$version
+断开当前连接：discon
+连接其他用户：conn
+查看当前用户的角色：select * from user_role_privs;
+查看当前用户的角色名：show user；
+查看当前用户的系统权限：select * from user_sys_privs;
+从dos连接到sqlplus：sqlplus  或者 sqlplus/nolog(不用登录，用户名显示为“”，且无法断开连接)
+退出sqlplus：exit；
