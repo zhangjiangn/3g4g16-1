@@ -1,0 +1,13 @@
+create table dept(
+	did integer primary key,
+	dname varchar2(20),
+	tel varchar2(15),
+	ress varchar2(20)
+);
+
+insert into dept values(1,'董事长'，'111111','沈阳');
+insert into dept values(2,'市场部'，'222222','武汉');
+insert into dept values(3,'研发部'，'333333','长春');
+insert into dept values(4,'财务部'，'444444','南京');
+
+commit;

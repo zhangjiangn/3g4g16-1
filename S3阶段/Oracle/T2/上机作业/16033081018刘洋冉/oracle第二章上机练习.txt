@@ -1,0 +1,83 @@
+Microsoft Windows [版本 6.1.7601]
+版权所有 (c) 2009 Microsoft Corporation。保留所有权利。
+
+C:\Users\Administrator>lsnrotl stop
+'lsnrotl' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+C:\Users\Administrator>lsnrctl stop
+
+LSNRCTL for 32-bit Windows: Version 11.2.0.1.0 - Production on 13-1月 -2018 1
+2:39
+
+Copyright (c) 1991, 2010, Oracle.  All rights reserved.
+
+正在连接到 (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=127.0.0.1)(PORT=1521)))
+命令执行成功
+
+C:\Users\Administrator>lsnrctl start
+
+LSNRCTL for 32-bit Windows: Version 11.2.0.1.0 - Production on 13-1月 -2018 1
+3:02
+
+Copyright (c) 1991, 2010, Oracle.  All rights reserved.
+
+启动tnslsnr: 请稍候...
+
+TNSLSNR for 32-bit Windows: Version 11.2.0.1.0 - Production
+系统参数文件为C:\oracle\product\11.2.0\dbhome_1\network\admin\listener.ora
+监听: (DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=127.0.0.1)(PORT=1521)))
+
+正在连接到 (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=127.0.0.1)(PORT=1521)))
+LISTENER 的 STATUS
+------------------------
+别名                      LISTENER
+版本                      TNSLSNR for 32-bit Windows: Version 11.2.0.1.0 - Pr
+ction
+启动日期                  13-1月 -2018 16:03:05
+正常运行时间              0 天 0 小时 0 分 3 秒
+跟踪级别                  off
+安全性                    ON: Local OS Authentication
+SNMP                      OFF
+监听程序参数文件          C:\oracle\product\11.2.0\dbhome_1\network\admin\lis
+er.ora
+监听端点概要...
+  (DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=127.0.0.1)(PORT=1521)))
+服务摘要..
+服务 "PLSExtProc" 包含 1 个实例。
+  实例 "PLSExtProc", 状态 UNKNOWN, 包含此服务的 1 个处理程序...
+服务 "orcl" 包含 1 个实例。
+  实例 "orcl", 状态 UNKNOWN, 包含此服务的 1 个处理程序...
+命令执行成功
+
+C:\Users\Administrator>net stop oracleserviceOrcl
+OracleServiceORCL 服务正在停止.....
+OracleServiceORCL 服务已成功停止。
+
+
+C:\Users\Administrator>net start oracleserviceorcl
+OracleServiceORCL 服务正在启动 .....
+OracleServiceORCL 服务已经启动成功。
+
+
+C:\Users\Administrator>sqlplusw
+'sqlplusw' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+
+C:\Users\Administrator>sqlplus
+
+SQL*Plus: Release 11.2.0.1.0 Production on 星期六 1月 13 16:08:43 2018
+
+Copyright (c) 1982, 2010, Oracle.  All rights reserved.
+
+请输入用户名:  sys as sysdba/123
+SP2-0306: 选项无效。
+用法: CONN[ECT] [{logon|/|proxy} [AS {SYSDBA|SYSOPER|SYSASM}] [edition=value]
+其中 <logon> ::= <username>[/<password>][@<connect_identifier>]
+      <proxy> ::= <proxyuser>[<username>][/<password>][@<connect_identifier>]
+请输入用户名:  sys as sysdba
+输入口令:
+
+连接到:
+Oracle Database 11g Enterprise Edition Release 11.2.0.1.0 - Production
+With the Partitioning, OLAP, Data Mining and Real Application Testing options
