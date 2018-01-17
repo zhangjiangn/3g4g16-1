@@ -1,0 +1,22 @@
+create table dept(
+	did number primary key,
+	dname varchar2(20),
+	manager number,
+	tel varchar2(30)
+);
+create table emp(
+	eid number primary key,
+	ename varchar2(20),
+	sex char(1),
+	hire date,
+	sar number(8,2),
+	did number
+);
+create table history(
+	hid number primary key,
+	startdate date,
+	enddate date,
+	place varchar2(50),
+	job varchar2(20),
+	eid number
+);
