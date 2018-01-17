@@ -1,0 +1,22 @@
+1.查看当前数据库：
+   select name from v$database;
+2.查看系统全局大小：
+   show sga;
+3.查看系统默认数据库：
+   select*from emp;
+4.查看控制文件和日志文件的位置：
+   select name from v$controlfile;
+5.查询日志文件所在的位置：
+   select member from v$logfile;
+6.查看数据文件：
+   select name from v$datafile;
+
+
+select*from dba_extents
+
+
+services.msc手动开Oracle运行
+sqlplus  命令
+sys as sysdba打开数据库的用户名
+scott/tiger
+
