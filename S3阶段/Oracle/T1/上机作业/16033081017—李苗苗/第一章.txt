@@ -1,0 +1,27 @@
+sys as sysdba
+123
+
+system/123
+
+
+
+查询sga区情况：show sga
+
+查询数据库名：select name from v$database;
+
+查询控制文件：select name from v$controlfile;
+
+查询日志文件：select member from v$logfile;
+
+查询数据文件：select name from v$datafile;
+
+查询各个区间对象的详细信息：select * from dba_extents;
+
+
+scott/tiger
+select * from emp;
+/
+
+conn切换用户
+
+
