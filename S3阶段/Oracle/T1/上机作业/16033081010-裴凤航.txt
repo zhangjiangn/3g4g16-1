@@ -1,0 +1,37 @@
+sqlplus 进入sqlplus；
+system/123 登陆system账号
+scott/tiger 登陆scott账号，里面有4个表
+sys as sysdbo 123 登陆sys；
+select name from v$database;查询数据库名字；
+
+select name from v$controlfile;查询主要的物理文件所在路径（sys）
+select member from  v$logfile;（sys）
+select name from v$datafile;（sys）
+select * from aba_extent
+
+SQL> select member from v$logfile;
+
+MEMBER                                                                          
+--------------------------------------------------------------------------------
+C:\ORACLE\ORADATA\ORCL\REDO03.LOG                                               
+C:\ORACLE\ORADATA\ORCL\REDO02.LOG                                               
+C:\ORACLE\ORADATA\ORCL\REDO01.LOG                                               
+
+SQL> select name from v$controlfile;
+
+NAME                                                                            
+--------------------------------------------------------------------------------
+C:\ORACLE\ORADATA\ORCL\CONTROL01.CTL                                            
+C:\ORACLE\FLASH_RECOVERY_AREA\ORCL\CONTROL02.CTL                                
+
+SQL> select name from v$datafile;
+
+NAME                                                                            
+--------------------------------------------------------------------------------
+C:\ORACLE\ORADATA\ORCL\SYSTEM01.DBF                                             
+C:\ORACLE\ORADATA\ORCL\SYSAUX01.DBF                                             
+C:\ORACLE\ORADATA\ORCL\UNDOTBS01.DBF                                            
+C:\ORACLE\ORADATA\ORCL\USERS01.DBF                                              
+C:\ORACLE\ORADATA\ORCL\EXAMPLE01.DBF                                            
+
+SQL> spool off
