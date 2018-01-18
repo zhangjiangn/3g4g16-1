@@ -1,0 +1,111 @@
+SQL> select name from v$database;
+
+NAME                                                                            
+---------                                                                       
+ORCL                                                                            
+
+SQL> show parameters table_name;
+SQL> show parameters db_name;
+
+NAME                                 TYPE        VALUE                          
+------------------------------------ ----------- ------------------------------ 
+db_name                              string      orcl                           
+SQL> select value from v$parameter where name='db_name';
+
+VALUE                                                                           
+--------------------------------------------------------------------------------
+orcl                                                                            
+
+SQL> select sysdate from dual;
+
+SYSDATE                                                                         
+--------------                                                                  
+13-1月 -18                                                                      
+
+SQL> set time on
+16:29:59 SQL> set time off
+
+SQL> conn
+请输入用户名:  scott
+ERROR:
+ORA-28001: the password has expired 
+
+更改 scott 的口令
+口令已更改
+已连接。
+SQL> select * from dept
+  2  ;
+
+    DEPTNO DNAME          LOC                                                   
+---------- -------------- -------------                                         
+        10 ACCOUNTING     NEW YORK                                              
+        20 RESEARCH       DALLAS                                                
+        30 SALES          CHICAGO                                               
+        40 OPERATIONS     BOSTON                                                
+
+SQL> @d:/b.txt
+
+表已创建。
+
+
+已创建 1 行。
+
+
+已创建 1 行。
+
+
+已创建 1 行。
+
+
+已创建 1 行。
+
+
+提交完成。
+
+SQL> ttitle '部门列表'
+SQL> btitle'制表人：m'
+SQL> column tel heading '部门电话'
+SQL> column tel format $99,999,999
+SQL> column ress null'地址不明'
+SQL> column dname jus center
+SQL> column did noprint
+SQL> select * from dept;
+
+星期六 1月  13                                                        第    1
+                                    部门列表
+
+       DNAME         部门电话        RESS                                       
+-------------------- --------------- --------------------                       
+董事长               111111          沈阳                                       
+市场部               222222          武汉                                       
+研发部               333333          长春                                       
+财务部               444444          南京                                       
+
+
+
+                                   制表人：m
+
+SQL> ttitle '部门列表'
+SQL> btitle'制表人：m'
+SQL> column tel heading '部门电话'
+SQL> column tel format $99,999,999
+SQL> column ress null'地址不明'
+SQL> column dname just center
+SQL> column did noprint
+SQL> select * from dept;
+
+星期六 1月  13                                                        第    1
+                                    部门列表
+
+       DNAME         部门电话        RESS                                       
+-------------------- --------------- --------------------                       
+董事长               111111          沈阳                                       
+市场部               222222          武汉                                       
+研发部               333333          长春                                       
+财务部               444444          南京                                       
+
+
+
+                                   制表人：m
+
+SQL> spool off;
