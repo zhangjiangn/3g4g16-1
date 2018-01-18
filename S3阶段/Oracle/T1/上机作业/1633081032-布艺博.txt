@@ -1,0 +1,12 @@
+  
+
+sqlplus 
+system/123 
+select * from DBA_EXTENTS
+select name from v$database;显示数据库的名称
+scott/tiger 
+sys as sysdbo 123  
+select name from v$controlfile;控制文件位置
+select member from  v$logfile;日志文件位置
+select name from v$datafile;数据文件位置
+
