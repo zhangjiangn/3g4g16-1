@@ -1,0 +1,13 @@
+sqlplus登录oracle数据库有三种方式：分别如下,Scott是用户名
+sqlplus --> 输入scott --> 输入tiger。
+ sqlplus scott --> 输入密码。
+ sqlplus scott/tiger
+
+注：Oracle查询以  ；  结束语句
+
+登录 sys sa sysdba  密码123
+
+select name from v$database;查看当前连接数据名称
+select name from v$controlfile;物理文件所在路径
+select member from v$logfile;
+select name from v$datafile;
