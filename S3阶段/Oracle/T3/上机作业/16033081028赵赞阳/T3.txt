@@ -1,0 +1,27 @@
+select * from emp;
+select * from dept;
+create table emptwo as select ename from emp;
+
+select * from emptwo
+
+update emp set sal=sal+500 where sal<1000;
+
+
+select rownum,empno,ename from emp where rownum<6
+
+select * from (select rownum ro,empno,ename from emp where rownum<11) temp where temp.ro>=6
+
+select * from (select rownum ro,empno,ename from emp where rownum<15) temp where temp.ro>10
+
+
+select e.deptno,avg(sal),sum(sal),count(deptno) from emp e group by e.deptno having count(deptno)>4
+
+select e.*,d.dname,d.loc from emp e,dept d where e.deptno=d.deptno
+
+select e.*,d.dname,d.loc from emp e left join  dept d on e.deptno=d.deptno
+
+select * from emp order by sal asc
+
+select * from emp where sal between 3000and 6000
+
+select * from emp where sal>=3000 and sal<6000
