@@ -1,0 +1,26 @@
+select * from emp
+--创建表结构 不复制数据
+create table empthree as select ename,job,mgr from emp where 1=2
+select * from emptwo
+alter table emptwo add  tianyuanlin varchar2(25);
+alter table emptwo modify tianyuanlin integer;
+alter table emptwo drop column tianyuanlin
+alter table emptwo add constraint c1 check(job in('m','f'));
+select * from dept
+insert into dept values(50,'董事会', '11111')
+--查询前五条
+select *  from emp where rownum<5
+--分页查询6-14条
+select * from   (select rownum r,e.* from emp e)  where r>5 and r<15 
+select * from dept
+--内连接
+select e.ename,d.dname from emp e,dept d where e.deptno=d.deptno;
+select e.ename,d.dname from emp e join dept d on  e.deptno=d.deptno;
+--左连接
+select * from emp e left join dept d on  e.deptno=d.deptno;
+--右连接
+select * from emp e right join dept d on e.deptno=d.deptno;
+--查询最大
+select max(sal),count(empno) from emp e;
+--查询工资大于400的员工
+select * from emp where sal>4000
