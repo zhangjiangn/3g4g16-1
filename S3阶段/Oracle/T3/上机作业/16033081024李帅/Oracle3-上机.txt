@@ -24,3 +24,11 @@ select * from emp e right join dept d on e.deptno=d.deptno;
 select max(sal),count(empno) from emp e;
 --查询工资大于400的员工
 select * from emp where sal>4000
+--查询所有10,20员工的信息
+select * from emp where deptno in(10,20);
+--查询A开头的员工
+select * from emp where ename like 'A%';
+--查询部门30 A开头的员工
+select * from emp where ename like 'A%' and deptno=30;
+--查询人数最多的部门，如果有多个部门的人数相同 则查询部门编号最小的部门
+select deptno,count(empno) from emp group by deptno order by count(empno) desc,deptno desc;
