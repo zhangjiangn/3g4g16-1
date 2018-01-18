@@ -1,0 +1,18 @@
+查询系统视图           
+select name from v$database;
+
+
+SGA区域分配的内存大小
+show sga;
+
+
+查询数据文件的位置
+select name from v$datafile;
+
+
+查询控制文件所在的位置
+select name from v$controlfile;
+
+
+查询日志文件所在位置
+select member from v$logfile;
