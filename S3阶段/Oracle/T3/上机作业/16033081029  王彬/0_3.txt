@@ -1,0 +1,40 @@
+select * from emp;
+select * from dept;
+
+--分页
+  --第一页
+    select rownum,empno,ename from emp where rownum<=5;
+  --第二页
+    select * from (select rownum rn,empno,ename from emp where rownum<=10) temp where rn>5;
+  --第三页
+     select * from (select rownum rn,empno,ename from emp where rownum<=15) temp where rn>10;
+
+--查询各个员工的名字及其经理名字
+  select  e.empno,e.ename,m.empno,m.ename from emp e,emp m where e.empno=m.empno;
+  
+--列出部门名称和这些部门的员工信息，包括那些没有员工的部门。
+  select d.dname,e.* from dept d left join emp e on d.deptno=e.deptno；
+  
+--查询工资在3000--6000之内的
+  select * from emp where sal between 3000 and 6000;
+
+--按部门编号升序排序，同时将每个部门的工资按降序排序：
+  select * from emp order by deptno asc,sal desc;
+
+--查询所有20号和30号部门的员工:
+  select * from emp where deptno in(20,30);  
+
+--查询所有员工的平均工资，最高工资和最低工资：
+  select avg(sal),max(sal),min(sal) from emp;
+
+--查询员工表总人数和每月支出的工资数：
+  select count(empno),sum(sal) from emp;
+  
+--查询所有员工的平均工资，最高工资和最低工资：
+  select avg(sal),max(sal),min(sal) from emp;
+
+--查询员工表总人数和每月支出的工资数：
+  select count(empno),sum(sal) from emp;
+  
+--查询每个部门的最高工资、最低工资和平均工资，只保留平均工资小于5000的部门：
+  select d.dname,avg(e.sal) from dept d,emp e where d.deptno=e.deptno group by d.dname having avg(e.sal)<5000;
