@@ -1,0 +1,126 @@
+创建一个员工视图，其中只显示员工姓名、工资和入职日期：
+create or replace view empview
+as
+select empno,ename,sal,hiredate from emp;
+
+查看视图的结构可以使用：
+desc empview;
+
+向视图中修改一条数据：
+update empview set ename='ware' where empno=7521
+之后查询基表emp中的数据：
+select * from emp;
+
+创建只读视图
+create or replace view myview
+as
+select empno,ename,sal from emp
+with read only
+
+删除视图使用drop语句，如：
+drop view empview;
+
+查看当前用户能够使用的所有视图：
+select * from user_views;
+
+
+创建唯一索引
+create unique index indexname on tablename(columnname)
+pctfree n;
+
+删除已存在的索引使用：
+drop index deptname;
+drop index empname;
+
+查看当前用户创建的所有索引：
+select * from user_indexes;
+
+查看指定表的索引字段信息：
+select index_name,column_name,column_position
+from user_ind_columns
+where table_name='emp';
+
+
+创建一个序列，初值从3开始，每次其值递增1，最小值1，最大值10，循环出现并不缓存：
+create sequence seqname
+increment by 1
+start with 3
+minvalue 1
+maxvalue 10
+cycle
+nocache;
+
+反复执行以下代码后，可以看到序列的值在增加到10之后，重新从1开始增加：
+select seqname.nextval from dual;
+
+查看序列的当前值：
+select seqname.currval from dual;
+
+在向数据表添加数据时，指定记录的主键值由序列生成：
+create sequence seq;
+create table tb(
+	tid integer primary key,
+	nam varchar2(20)
+);
+insert into tb values(seq.nextval,'tom');
+insert into tb values(seq.nextval,'jack');
+insert into tb values(seq.nextval,'kelly');
+
+删除一个序列：
+drop sequence seqname;
+
+查看当前用户创建的所有序列：
+select * from user_sequences;
+
+查看当前用户可以存取的所有序列:
+select * from all_sequences;
+
+
+查看当前数据库有哪些表空间组成：
+select tablespace_name from user_tablespaces;
+
+创建一个test数据表空间:
+create tablespace test
+nologging
+datafile 'd:/test01.dbf' size 50M reuse
+autoextend on next 512k maxsize 100M
+extent management local;
+
+创建一个临时表空间：
+create temporary tablespace testtemp
+tempfile 'd:/testtemp01.dbf' size 10M
+extent management local;
+
+创建一个日志表空间：
+create undo tablespace testundo
+datafile 'd:/testundo.log' size 10M;
+
+为表空间添加数据文件：
+alter tablespace test
+add datafile 'd:/test02.dbf' size 50M maxsize unlimited;
+
+或者修改原有数据文件的最大容量：
+alter database datafile 'd:/test01.dbf' resize 200M;
+
+删除某个数据文件：
+alter tablespace test drop datafile 'd:/test02.dbf';
+
+设置表空间中的数据为只读：
+alter tablespace test read only
+
+恢复表空间中的数据为可读可写：
+alter tablespace test read write
+
+
+删除表空间：
+drop tablespace test	--只删除逻辑名称
+including contents	--删除表空间中的对象
+and datafiles	--包括删除数据文件
+
+
+
+
+
+
+
+
