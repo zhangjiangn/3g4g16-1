@@ -1,0 +1,67 @@
+Select abs(-15) from dual; 
+Select ceil(44.778) from dual; 
+Select cos(180) from dual; --余弦
+Select floor(100.2) from dual; 
+Select power(4,2) from dual; --4的2次方
+Select mod(10,3) from dual; --求余
+Select round(100.256,2) from dual; --四舍五入，剩余后2位
+Select trunc(100.256,2) from dual; --取小数点后2位
+Select sqrt(4) from dual; 
+Select sign(-30) from dual;
+
+Select initcap('hello') from dual;--首字母大写
+Select lower('FUN') from dual;--变小写
+Select upper('sun') from dual;--变大写
+Select Length('sun') from dual;--长度
+Select ltrim( 'xyzadams','xyz') from dual; --去掉指定的字母（左）
+Select rtrim('xyzadams','ams') from dual; --去掉指定的字母（右）
+Select translate('jack','j' ,'b') from dual; --替换
+Select replace('jack and jue' ,'j','bl') from dual;--替换所有
+Select instr ('worldwide','d') from dual; --指定字母所在的第一个位置
+Select substr('abcdefg',3,2) from dual; --从指定位置截取，取指定位数
+Select concat ('Hello',' world') from dual; --合并
+
+select months_between(to_date('2004/02/12','yyyy/mm/dd') , 
+to_date('2000/01/01','yyyy/mm/dd') ) as  "月份间隔" from dual;
+
+select to_char(sysdate,'yyyy-mm-dd dy am hh:mi:ss') from dual;
+
+select to_date('2013-05-14','yyyy-mm-dd') from dual;
+select to_date('14-05-2013','dd-mm-yyyy') from dual;
+select to_date('05-14-2013','mm-dd-yyyy') from dual;
+
+select to_number('$12,345.6','$99,999.9') from dual;
+select to_number('￥12,345.6','L99,999.99') from dual;
+
+select to_number('0023','0099') from dual;--结果是23
+select to_number('03.14','09.99') from dual;--结果是3.14
+
+select ename, nvl(sar,0) from emp;
+
+利用伪列ruwnum查询当前的纪录
+select rownum,d.* from dept d where rownum between 1 and 3 
+
+case语句用于标量子查询，例如查询员工信息，将'SALESMAN' 替换成“销售”，MANAGER替换成“经理” 
+select empno,ename,
+  case JOB
+    when 'SALESMAN' then '销售'
+    when 'MANAGER' then '经理'
+    else JOB
+  end
+from emp;
+
+查询存在员工的部门
+select d.* from dept d where exists 
+	(select e.* from emp e where e.deptno=d.deptno);
+
+查询不存在员工的部门
+select d.* from dept d where not exists 
+	(select e.* from emp e where e.deptno=d.deptno);
+
+查询工资比其所在部门平均工资高的员工信息 
+SQL> with a as(select empno,sal,deptno from emp),
+    b as(select deptno,avg(sal) sal from emp group by deptno)
+    select * from emp where empno in(
+    select a.empno from a,b where a.deptno=b.deptno and a.sal>b.sal);
+
+
