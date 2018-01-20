@@ -1,0 +1,33 @@
+--字符函数
+select concat('asdasd','dasdasd') from dual
+select substr('asdsdwwq',3,5) from dual
+select ltrim( '       asdas') from dual
+select rtrim('asdsad    ') from dual
+select length('asdafgxcc') from dual
+select upper('asdasd') from dual
+select lower('SDADdd') from dual
+select initcap('dsdf') from dual
+select translate('qwdfas','fas','q') from dual
+select instr('qwe','s') from dual
+select replace('sdafasf','sf','123') from dual 
+--日期函数
+select sysdate from dual
+select months_between(to_date('2010-10-21','yyyy-mm-dd'),sysdate) from dual;
+select add_months(sysdate,1) from dual
+select next_day(sysdate,2) from dual
+select last_day(sysdate+20) from dual
+--转换函数
+select to_char(sysdate,'yyyy-mm-dd') from dual
+select to_date('2013-02-12','yyyy-mm-dd')from dual
+select to_number('0012','9999') from dual
+--使用nvl函数
+select e.empno,ename,nvl(e.sal,0) from emp e
+--使用标量查询将性别显示为汉字
+select empno,ename
+  case sex
+      when 'm' then '男'
+        when 'f' then '女'
+      else sex
+       end
+       from emp;
+  
