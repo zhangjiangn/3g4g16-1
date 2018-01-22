@@ -1,0 +1,57 @@
+select * from scott.emp
+select * from scott.dept
+
+create view view_emp
+as
+select ename,mgr from scott.emp
+select * from view_emp
+--新建视图（单表）
+insert into view_emp values ('aaa',1233)--添加数据
+create view view_emp_dept
+as
+select e.ename,e.mgr,d.dname from scott.emp e,scott.dept d where e.deptno=d.deptno
+select * from view_emp_dept
+--新建视图（多表-只能查不能改(基表))
+create  or replace view view_emp-- or replace 修改
+as
+select ename,mgr from scott.emp
+with read only--只读
+
+drop view_emp--删除试图
+--desc view_emp 查看试图结构
+--索引
+create index index_emp 
+on
+scott.emp(sal)
+--新建索引
+   --循环序列
+   create sequence seqname
+   increment by 1
+   start with 3
+   minvalue 0
+   maxvalue 10
+   cycle 
+   nocache;
+   select seqname.nextval from dual;
+   select seqname.currval from dual;
+   --创建表空间
+   create tablespace test
+   nologging
+   datafile 'D：text.dbf' size 50m reuse
+   autoextend on next 521k maxsize 100m
+   extent ,management local;
+   --创建一个临时表空间
+   create temporary tablespace testtemp
+   ttempfile 'd:texttemp.dbf' size 10m
+   extent management local;
+   --创建一个日志表空间
+   create undo tablespace testundo
+   datafile'D:textundo.log'size 10m;
+   --修改表空间的数据文件的名称
+   --表空间脱机
+   alter tablespace text offline normal
+   
+   alter tablespace text
+   rename datafile'原来的数据文件路径和名称'
+   to '新的数据文件路径和名称'
+   alter tablespace text online17:16 2018/1/18
