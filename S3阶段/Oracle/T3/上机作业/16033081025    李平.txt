@@ -1,0 +1,59 @@
+--------1．列出至少有一个员工的所有部门。
+   select dname from dept where deptno in(select deptno from emp); 
+   select dname from dept where deptno in(select deptno from emp group by deptno having count(deptno) >=1);
+  
+--------2．列出薪金比“SMITH”多的所有员工。  
+   select * from emp where sal > (select sal from emp where ename = 'SMITH');
+  
+--------3．列出所有员工的姓名及其直接上级的姓名。 
+    select a.ename,(select ename from emp b where b.empno=a.mgr) as boss_name from emp a; 
+  
+--------4．列出受雇日期早于其直接上级的所有员工。
+    select a.ename from emp a where a.hiredate<(select hiredate from emp b where b.empno=a.mgr);   
+
+--------5．列出部门名称和这些部门的员工信息，同时列出那些没有员工的部门  
+     select a.dname,b.empno,b.ename,b.job,b.mgr,b.hiredate,b.sal,b.deptno  
+     from dept a left join emp b on a.deptno=b.deptno;  
+
+--------6．列出所有“CLERK”（办事员）的姓名及其部门名称。 
+    select a.ename,b.dname from emp a join dept b on a.deptno=b.deptno and a.job='CLERK';
+  
+--------7．列出最低薪金大于1500的各种工作。 
+     select distinct job as HighSalJob from emp group by job having min(sal)>1500;
+   
+--------8．列出在部门“SALES”（销售部）工作的员工的姓名，假定不知道销售部的部门编号。 
+     select ename from emp where deptno=(select deptno from dept where dname='SALES');   
+
+--------9．列出薪金高于公司平均薪金的所有员工。
+    select ename from emp where sal>(select avg(sal) from emp);  
+ 
+--------10．列出与“SCOTT”从事相同工作的所有员工。 
+     select ename from emp where job=(select job from emp where ename='SCOTT');  
+
+--------11．列出薪金等于部门30中员工的薪金的所有员工的姓名和薪金。
+    select a.ename,a.sal from emp a where a.sal in (select b.sal  
+     from emp b where b.deptno=30) and a.deptno$amp;<amp;$gt;30;   <br="">
+
+--------12．列出薪金高于在部门30工作的所有员工的薪金的员工姓名和薪金。  
+   select ename,sal from emp where sal>(select max(sal) from emp where deptno=30);   
+
+--------13．列出在每个部门工作的员工数量、平均工资和平均服务期限。  
+   select (select b.dname from dept b where a.deptno=b.deptno) as deptname ,count(deptno) as deptcount,avg(sal) as deptavgsal  from emp a group by deptno; 
+        
+--------14．列出所有员工的姓名、部门名称和工资。
+  select a.ename,(select b.dname from dept b where b.deptno=a.deptno) as deptname,sal from emp a; 
+
+--------15、列出从事同一种工作但属于不同部门的员工的一种组合。
+   select * from emp e order by e.job,e.deptno
+
+--------16．列出所有部门的详细信息和部门人数。 
+   select a.deptno,a.dname,a.loc,(select count(deptno) from emp b where b.deptno=a.deptno group by b.deptno) as deptcount from dept a; 
+  
+--------17．列出各种工作的最低工资。
+   select job,avg(sal) from emp group by job; 
+ 
+--------18．列出各个部门的MANAGER（经理）的最低薪金。 
+ select deptno,min(sal) from emp where job='MANAGER' group by deptno; 
+
+--------19．列出所有员工的年工资,按年薪从低到高排序。  
+   select ename,(sal+nvl(comm,0))*12 as salpersal from emp order by salpersal;  

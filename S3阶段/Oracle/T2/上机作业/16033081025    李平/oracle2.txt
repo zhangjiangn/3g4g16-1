@@ -1,0 +1,47 @@
+16:08:07 SQL> set time on;
+16:10:51 SQL> show user;
+USER 为 "SCOTT"
+16:11:15 SQL> select sysdate from dual;
+
+SYSDATE                                                                         
+--------------                                                                  
+13-1月 -18                                                                      
+
+16:12:01 SQL> show sga;
+ORA-00942: table or view does not exist 
+
+
+16:12:16 SQL> @c:\aaa.txt;
+16:14:03 SQL> @c:\aaa.txt
+16:14:10 SQL> @c:aaa.txt
+16:15:02 SQL> @c:\aaa.txt;
+
+    DEPTNO DNAME          LOC                                                   
+---------- -------------- -------------                                         
+        10 ACCOUNTING     NEW YORK                                              
+        20 RESEARCH       DALLAS                                                
+        30 SALES          CHICAGO                                               
+        40 OPERATIONS     BOSTON                                                
+
+16:16:06 SQL> @c:\aaa.txt;
+
+    DEPTNO DNAME          LOC                                                   
+---------- -------------- -------------                                         
+        10 ACCOUNTING     NEW YORK                                              
+        20 RESEARCH       DALLAS                                                
+        30 SALES          CHICAGO                                               
+        40 OPERATIONS     BOSTON                                                
+
+
+    DEPTNO DNAME          LOC                                                   
+---------- -------------- -------------                                         
+        10 ACCOUNTING     NEW YORK                                              
+        20 RESEARCH       DALLAS                                                
+        30 SALES          CHICAGO                                               
+        40 OPERATIONS     BOSTON                                                
+
+16:23:13 SQL> edit
+已写入 file afiedt.buf
+
+  1* select * from dept where deptno>20;
+16:24:53 SQL> spool off
