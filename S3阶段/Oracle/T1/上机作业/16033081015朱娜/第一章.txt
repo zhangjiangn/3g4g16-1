@@ -1,0 +1,36 @@
+scott/tiger
+
+select * from emp;
+
+sys as sysdba
+123
+
+system/123
+
+
+select name from v$database;------查询数据库库名；
+select name from v$logfile;-------查询日志文件；
+select member from v$controlfile;-查询控制文件；
+select name from v$datafile;------查询数据文件；
+select * from dba_extents;--------查询各个区间对象的详细信息；
+
+show sga------查询sga区情况；
+
+
+--分页
+select rownum r,e.* from emp e where rownum<=5
+
+select * from  (select rownum r,e.* from emp e where rownum<=10) where r>5
+
+select * from (select rownum r,e.* from emp e where rownum<=14) where r>10
+
+--将所有人的工资加500：
+update emp set sar=sar+500;
+
+--按工资升序：
+select * from emp order by sar asc;
+
+--between…and是用于范围查询，范围中包含了最大值和最小值，例如：
+select * from emp where sar between 3000 and 6000;
+--查询工资不在这个范围内的记录：
+select * from emp where sar not between 3000 and 6000;
