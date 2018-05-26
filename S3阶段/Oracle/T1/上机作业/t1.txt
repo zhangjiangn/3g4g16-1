@@ -1,0 +1,18 @@
+sqlplus
+sys as sysdba
+
+查看当前数据库名称
+select name from v$database;
+select value from v$parameter where name='db_name';
+show parameters db_name;
+
+使用@载入外部文件并执行 
+@f:/test.txt;
+
+查看当前系统全局区大小
+show sga;
+
+查看各主要物理文件的位置：
+select name from v$controlfile;
+select member from v$logfile;
+select name from v$datafile;
